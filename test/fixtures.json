@@ -1,0 +1,27 @@
+{
+  "valid": [
+    {
+      "address": "1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH",
+      "uri": "bitcoin:1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH"
+    },
+    {
+      "address": "1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH",
+      "label": "Luke-Jr",
+      "uri": "bitcoin:1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH?label=Luke-Jr"
+    },
+    {
+      "address": "1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH",
+      "amount": 20.3,
+      "label": "Luke-Jr",
+      "uri": "bitcoin:1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH?amount=20.3&label=Luke-Jr"
+    },
+    {
+      "address": "1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH",
+      "amount": 50,
+      "label": "Luke-Jr",
+      "message": "Donation for project xyz",
+      "uri": "bitcoin:1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH?amount=50&label=Luke-Jr&message=Donation%20for%20project%20xyz"
+    }
+  ]
+}
+

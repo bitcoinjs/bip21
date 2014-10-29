@@ -1,6 +1,6 @@
 {
   "name": "BIP21",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "description": "A BIP21 compatible URL encoding utility library",
   "main": "./index.js",
   "scripts": {
@@ -24,5 +24,6 @@
     "mocha": "^1.21.5"
   },
   "dependencies": {
+    "qs": "^2.3.2"
   }
 }
