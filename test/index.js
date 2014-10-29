@@ -1,14 +1,13 @@
 var assert = require('assert')
-
-var BIP21 = require('../')
+var bip21 = require('../')
 
 var fixtures = require('./fixtures')
 
-describe('BIP21', function() {
+describe('bip21', function() {
   describe('decode', function() {
     fixtures.valid.forEach(function(f) {
       it('decodes ' + f.uri + ' correctly', function() {
-        var decode = BIP21.decode(f.uri)
+        var decode = bip21.decode(f.uri)
 
         assert.equal(decode.address, f.address)
         assert.equal(decode.amount, f.amount)
@@ -21,7 +20,7 @@ describe('BIP21', function() {
   describe('encode', function() {
     fixtures.valid.forEach(function(f) {
       it('encodes ' + f.uri + ' correctly', function() {
-        var result = BIP21.encode(f.address, {
+        var result = bip21.encode(f.address, {
           amount: f.amount,
           label: f.label,
           message: f.message
