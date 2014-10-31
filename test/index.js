@@ -15,6 +15,14 @@ describe('bip21', function() {
         assert.equal(decode.message, f.message)
       })
     })
+
+    fixtures.invalid.forEach(function(f) {
+      it('throws on ' + f.exception, function() {
+        assert.throws(function() {
+          bip21.decode(f.uri)
+        }, new RegExp(f.exception))
+      })
+    })
   })
 
   describe('encode', function() {
@@ -27,6 +35,14 @@ describe('bip21', function() {
         })
 
         assert.equal(result, f.uri)
+      })
+    })
+
+    fixtures.invalid.forEach(function(f) {
+      it('throws on ' + f.exception, function() {
+        assert.throws(function() {
+          bip21.encode(f.address, f.options)
+        }, new RegExp(f.exception))
       })
     })
   })
