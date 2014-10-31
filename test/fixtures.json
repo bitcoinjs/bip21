@@ -22,6 +22,16 @@
       "message": "Donation for project xyz",
       "uri": "bitcoin:1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH?amount=50&label=Luke-Jr&message=Donation%20for%20project%20xyz"
     }
+  ],
+  "invalid": [
+    {
+      "exception": "Invalid amount",
+      "address": "1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH",
+      "uri": "bitcoin:1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH?amount=two",
+      "options": {
+        "amount": "two"
+      }
+    }
   ]
 }
 
