@@ -18,9 +18,10 @@ function decode(uri) {
   var amount
 
   if (parsed.amount) {
-    amount = Math.abs(parsed.amount)
+    amount = parseFloat(parsed.amount)
 
-    assert.equal(amount + '', parsed.amount, 'Invalid amount')
+    assert(isFinite(amount), 'Invalid amount')
+    assert(amount >= 0, 'Invalid amount')
   }
 
   return {
@@ -35,7 +36,8 @@ function encode(address, options) {
   options = options || {}
 
   if (options.amount) {
-    assert.equal(Math.abs(options.amount), options.amount, 'Invalid amount')
+    assert(isFinite(options.amount), 'Invalid amount')
+    assert(options.amount >= 0, 'Invalid amount')
   }
 
   var query = qs.stringify(options)

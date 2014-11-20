@@ -11,6 +11,16 @@
     },
     {
       "address": "1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH",
+      "amount": 1,
+      "uri": "bitcoin:1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH?amount=1"
+    },
+    {
+      "address": "1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH",
+      "amount": "1.00",
+      "uri": "bitcoin:1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH?amount=1.00"
+    },
+    {
+      "address": "1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH",
       "amount": 20.3,
       "label": "Luke-Jr",
       "uri": "bitcoin:1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH?amount=20.3&label=Luke-Jr"
@@ -34,7 +44,22 @@
       "address": "1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH",
       "uri": "bitcoin:1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH?amount=-1",
       "options": {
+        "amount": -1
+      }
+    },
+    {
+      "exception": "Invalid amount",
+      "address": "1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH",
+      "options": {
         "amount": "-1"
+      }
+    },
+    {
+      "exception": "Invalid amount",
+      "address": "1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH",
+      "uri": "bitcoin:1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH?amount=-1.00",
+      "options": {
+        "amount": -1.00
       }
     },
     {

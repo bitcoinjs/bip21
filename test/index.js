@@ -17,6 +17,8 @@ describe('bip21', function() {
     })
 
     fixtures.invalid.forEach(function(f) {
+      if (!f.uri) return;
+
       it('throws on ' + f.exception, function() {
         assert.throws(function() {
           bip21.decode(f.uri)
@@ -39,6 +41,8 @@ describe('bip21', function() {
     })
 
     fixtures.invalid.forEach(function(f) {
+      if (!f.address) return;
+
       it('throws on ' + f.exception, function() {
         assert.throws(function() {
           bip21.encode(f.address, f.options)
