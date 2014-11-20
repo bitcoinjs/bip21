@@ -1,6 +1,6 @@
 {
   "name": "bip21",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A BIP21 compatible URL encoding utility library",
   "main": "./index.js",
   "scripts": {
