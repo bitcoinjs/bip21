@@ -11,6 +11,16 @@
     },
     {
       "address": "1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH",
+      "amount": 1,
+      "uri": "bitcoin:1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH?amount=1"
+    },
+    {
+      "address": "1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH",
+      "amount": "1.00",
+      "uri": "bitcoin:1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH?amount=1.00"
+    },
+    {
+      "address": "1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH",
       "amount": 20.3,
       "label": "Luke-Jr",
       "uri": "bitcoin:1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH?amount=20.3&label=Luke-Jr"
@@ -21,6 +31,44 @@
       "label": "Luke-Jr",
       "message": "Donation for project xyz",
       "uri": "bitcoin:1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH?amount=50&label=Luke-Jr&message=Donation%20for%20project%20xyz"
+    }
+  ],
+  "invalid": [
+    {
+      "exception": "Invalid checksum",
+      "address": "1BgGZ9tcN4rm9KBzDn7KprQz87SZ26XXXX",
+      "uri": "bitcoin:1BgGZ9tcN4rm9KBzDn7KprQz87SZ26XXXX"
+    },
+    {
+      "exception": "Invalid amount",
+      "address": "1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH",
+      "uri": "bitcoin:1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH?amount=-1",
+      "options": {
+        "amount": -1
+      }
+    },
+    {
+      "exception": "Invalid amount",
+      "address": "1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH",
+      "options": {
+        "amount": "-1"
+      }
+    },
+    {
+      "exception": "Invalid amount",
+      "address": "1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH",
+      "uri": "bitcoin:1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH?amount=-1.00",
+      "options": {
+        "amount": -1.00
+      }
+    },
+    {
+      "exception": "Invalid amount",
+      "address": "1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH",
+      "uri": "bitcoin:1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH?amount=two",
+      "options": {
+        "amount": "two"
+      }
     }
   ]
 }
