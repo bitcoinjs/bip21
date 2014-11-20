@@ -15,6 +15,13 @@ function decode(uri) {
 
   var query = qsplit[1]
   var parsed = qs.parse(query)
+  var amount
+
+  if (parsed.amount) {
+    amount = Math.abs(parsed.amount)
+
+    assert.equal(amount + '', parsed.amount, 'Invalid amount')
+  }
 
   return {
     address: address,
@@ -26,6 +33,11 @@ function decode(uri) {
 
 function encode(address, options) {
   options = options || {}
+
+  if (options.amount) {
+    assert.equal(Math.abs(options.amount), options.amount, 'Invalid amount')
+  }
+
   var query = qs.stringify(options)
 
   // throws if invalid
