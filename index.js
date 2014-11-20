@@ -33,6 +33,9 @@ function decode(uri) {
 }
 
 function encode(address, options) {
+  // throws if invalid
+  bs58check.decode(address)
+
   options = options || {}
 
   if (options.amount) {
@@ -41,9 +44,6 @@ function encode(address, options) {
   }
 
   var query = qs.stringify(options)
-
-  // throws if invalid
-  bs58check.decode(address)
 
   return "bitcoin:" + address + (query ? '?' : '') + query
 }
