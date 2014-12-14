@@ -15,21 +15,26 @@ function decode(uri) {
 
   var query = qsplit[1]
   var parsed = qs.parse(query)
-  var amount
+  var result = {
+    address: address
+  }
 
   if (parsed.amount) {
-    amount = parseFloat(parsed.amount)
+    result.amount = parseFloat(parsed.amount)
 
-    assert(isFinite(amount), 'Invalid amount')
-    assert(amount >= 0, 'Invalid amount')
+    assert(isFinite(result.amount), 'Invalid amount')
+    assert(result.amount >= 0, 'Invalid amount')
   }
 
-  return {
-    address: address,
-    amount: amount,
-    label: parsed.label,
-    message: parsed.message
+  if (parsed.label) {
+    result.label = parsed.label
   }
+
+  if (parsed.message) {
+    result.message = parsed.message
+  }
+
+  return result
 }
 
 function encode(address, options) {
