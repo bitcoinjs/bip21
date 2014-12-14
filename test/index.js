@@ -10,9 +10,11 @@ describe('bip21', function() {
         var decode = bip21.decode(f.uri)
 
         assert.equal(decode.address, f.address)
-        assert.equal(decode.amount, f.amount)
-        assert.equal(decode.label, f.label)
-        assert.equal(decode.message, f.message)
+
+        if (!f.options) return
+        assert.equal(decode.amount, f.options.amount)
+        assert.equal(decode.label, f.options.label)
+        assert.equal(decode.message, f.options.message)
       })
     })
 
@@ -30,11 +32,7 @@ describe('bip21', function() {
   describe('encode', function() {
     fixtures.valid.forEach(function(f) {
       it('encodes ' + f.uri + ' correctly', function() {
-        var result = bip21.encode(f.address, {
-          amount: f.amount,
-          label: f.label,
-          message: f.message
-        })
+        var result = bip21.encode(f.address, f.options)
 
         assert.equal(result, f.uri)
       })
