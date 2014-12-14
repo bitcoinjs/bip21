@@ -6,7 +6,7 @@ var bs58check = require('bs58check')
 var qs = require('qs')
 
 function decode(uri) {
-  assert(/bitcoin:+/.test(uri), 'Invalid BIP21 encoded URI: ' + uri)
+  assert(/bitcoin:/.test(uri), 'Invalid BIP21 encoded URI: ' + uri)
   var qsplit = uri.slice(8).split('?')
   var address = qsplit[0]
 
@@ -26,7 +26,7 @@ function decode(uri) {
 
   return {
     address: address,
-    amount: parsed.amount,
+    amount: amount,
     label: parsed.label,
     message: parsed.message
   }

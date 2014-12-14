@@ -60,6 +60,10 @@
   ],
   "invalid": [
     {
+      "exception": "Non-base58 character",
+      "uri": "bitcoin://1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH"
+    },
+    {
       "exception": "Invalid checksum",
       "address": "1BgGZ9tcN4rm9KBzDn7KprQz87SZ26XXXX",
       "uri": "bitcoin:1BgGZ9tcN4rm9KBzDn7KprQz87SZ26XXXX"
@@ -94,6 +98,14 @@
       "options": {
         "amount": "two"
       }
+    },
+    {
+      "exception": "Invalid amount",
+      "uri": "bitcoin:1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH?amount=NaN"
+    },
+    {
+      "exception": "Invalid amount",
+      "uri": "bitcoin:1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH?amount=Infinity"
     }
   ]
 }
