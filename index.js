@@ -43,7 +43,11 @@ function encode(address, options) {
     assert(options.amount >= 0, 'Invalid amount')
   }
 
-  var query = qs.stringify(options)
+  var query = qs.stringify({
+    amount: options.amount,
+    label: options.label,
+    message: options.message
+  })
 
   return "bitcoin:" + address + (query ? '?' : '') + query
 }
