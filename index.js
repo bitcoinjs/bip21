@@ -15,26 +15,17 @@ function decode(uri) {
 
   var query = qsplit[1]
   var parsed = qs.parse(query)
-  var result = {
-    address: address
-  }
+
+  parsed.address = address
 
   if (parsed.amount) {
-    result.amount = parseFloat(parsed.amount)
+    parsed.amount = parseFloat(parsed.amount)
 
-    assert(isFinite(result.amount), 'Invalid amount')
-    assert(result.amount >= 0, 'Invalid amount')
+    assert(isFinite(parsed.amount), 'Invalid amount')
+    assert(parsed.amount >= 0, 'Invalid amount')
   }
 
-  if (parsed.label) {
-    result.label = parsed.label
-  }
-
-  if (parsed.message) {
-    result.message = parsed.message
-  }
-
-  return result
+  return parsed
 }
 
 function encode(address, options) {
@@ -48,11 +39,7 @@ function encode(address, options) {
     assert(options.amount >= 0, 'Invalid amount')
   }
 
-  var query = qs.stringify({
-    amount: options.amount,
-    label: options.label,
-    message: options.message
-  })
+  var query = qs.stringify(options)
 
   return "bitcoin:" + address + (query ? '?' : '') + query
 }
