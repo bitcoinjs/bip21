@@ -1,12 +1,12 @@
 // https://github.com/bitcoin/bips/blob/master/bip-0021.mediawiki
 // bitcoin:<address>[?amount=<amount>][?label=<label>][?message=<message>]
 
-var assert = require('assert')
 var bs58check = require('bs58check')
 var qs = require('qs')
 
 function decode (uri) {
-  assert(/bitcoin:/.test(uri), 'Invalid BIP21 encoded URI: ' + uri)
+  if (!/bitcoin:/.test(uri)) throw new Error('Invalid BIP21 encoded URI: ' + uri)
+
   var qsplit = uri.slice(8).split('?')
   var address = qsplit[0]
 
@@ -21,8 +21,8 @@ function decode (uri) {
   if (parsed.amount) {
     parsed.amount = parseFloat(parsed.amount)
 
-    assert(isFinite(parsed.amount), 'Invalid amount')
-    assert(parsed.amount >= 0, 'Invalid amount')
+    if (!isFinite(parsed.amount)) throw new Error('Invalid amount')
+    if (parsed.amount < 0) throw new Error('Invalid amount')
   }
 
   return parsed
@@ -35,8 +35,8 @@ function encode (address, options) {
   options = options || {}
 
   if (options.amount) {
-    assert(isFinite(options.amount), 'Invalid amount')
-    assert(options.amount >= 0, 'Invalid amount')
+    if (!isFinite(options.amount)) throw new TypeError('Invalid amount')
+    if (options.amount < 0) throw new TypeError('Invalid amount')
   }
 
   var query = qs.stringify(options)
