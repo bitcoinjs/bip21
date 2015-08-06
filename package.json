@@ -2,29 +2,45 @@
   "name": "bip21",
   "version": "1.0.0",
   "description": "A BIP21 compatible URL encoding utility library",
-  "main": "./index.js",
-  "scripts": {
-    "coverage": "istanbul cover _mocha -- test/*.js",
-    "coveralls": "npm run coverage && coveralls < coverage/lcov.info",
-    "test": "istanbul test mocha -- --reporter list test/*.js"
-  },
+  "author": "Daniel Cousens",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/bitcoinjs/bip21.git"
   },
-  "author": "Daniel Cousens",
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/bitcoinjs/bip21/issues"
   },
   "homepage": "https://github.com/bitcoinjs/bip21",
-  "devDependencies": {
-    "coveralls": "^2.11.2",
-    "istanbul": "^0.3.2",
-    "mocha": "^1.21.5"
+  "keywords": [
+    "bip21",
+    "bitcoin"
+  ],
+  "main": "./index.js",
+  "scripts": {
+    "coverage": "mocha --require blanket -R travis-cov",
+    "coverage-local": "mocha --require blanket -R html-cov",
+    "standard": "standard",
+    "test": "npm run standard && npm run unit",
+    "unit": "mocha"
+  },
+  "config": {
+    "blanket": {
+      "pattern": [""],
+      "data-cover-never": ["node_modules", "test"]
+    },
+    "travis-cov": {
+      "threshold": 100
+    }
   },
   "dependencies": {
     "bs58check": "^1.0.3",
     "qs": "^2.3.2"
+  },
+  "devDependencies": {
+    "blanket": "*",
+    "mocha": "*",
+    "standard": "*",
+    "travis-cov": "*"
   }
 }
