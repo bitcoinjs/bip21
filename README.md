@@ -29,7 +29,4 @@ console.log(bip21.encode("1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH", {
 ```
 
 
-## License
-
-This library is free and open-source software released under the MIT license.
-
+## License [MIT](LICENSE)
