@@ -41,7 +41,7 @@ function encode (address, options) {
 
   var query = qs.stringify(options)
 
-  return "bitcoin:" + address + (query ? '?' : '') + query
+  return 'bitcoin:' + address + (query ? '?' : '') + query
 }
 
 module.exports = {
