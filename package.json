@@ -1,6 +1,6 @@
 {
   "name": "bip21",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A BIP21 compatible URL encoding utility library",
   "author": "Daniel Cousens",
   "license": "MIT",
@@ -26,8 +26,13 @@
   },
   "config": {
     "blanket": {
-      "pattern": [""],
-      "data-cover-never": ["node_modules", "test"]
+      "pattern": [
+        ""
+      ],
+      "data-cover-never": [
+        "node_modules",
+        "test"
+      ]
     },
     "travis-cov": {
       "threshold": 100
