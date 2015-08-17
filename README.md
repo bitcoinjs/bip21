@@ -18,12 +18,12 @@ console.log(decoded)
 //   amount: 20.3,
 //   label: 'Foobar' }
 
-console.log(bip21.encode("1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH"))
+console.log(bip21.encode('1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH'))
 // => bitcoin:1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH
 
-console.log(bip21.encode("1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH", {
+console.log(bip21.encode('1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH', {
 	amount: 20.3,
-	label: "Foobar"
+	label: 'Foobar'
 }))
 // => bitcoin:1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH?amount=20.3&label=Foobar
 ```
