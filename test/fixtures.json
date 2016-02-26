@@ -69,8 +69,8 @@
   ],
   "invalid": [
     {
-      "exception": "Non-base58 character",
-      "uri": "bitcoin://1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH"
+      "exception": "Invalid BIP21 URI",
+      "uri": "satoshi:1BgGZ9tcN4rm9KBzDn7KprQz87SZ26XXXX"
     },
     {
       "exception": "Invalid checksum",

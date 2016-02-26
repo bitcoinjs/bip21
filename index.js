@@ -5,15 +5,15 @@ var bs58check = require('bs58check')
 var qs = require('qs')
 
 function decode (uri) {
-  if (!/bitcoin:/.test(uri)) throw new Error('Invalid BIP21 encoded URI: ' + uri)
+  var qregex = /bitcoin:\/?\/?([^?]+)(\?([^]+))?/.exec(uri)
+  if (!qregex) throw new Error('Invalid BIP21 URI: ' + uri)
 
-  var qsplit = uri.slice(8).split('?')
-  var address = qsplit[0]
+  var address = qregex[1]
 
   // throws if invalid
   bs58check.decode(address)
 
-  var query = qsplit[1]
+  var query = qregex[3]
   var parsed = qs.parse(query)
 
   parsed.address = address

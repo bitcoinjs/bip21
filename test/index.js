@@ -8,8 +8,20 @@ var fixtures = require('./fixtures')
 describe('bip21', function () {
   describe('decode', function () {
     fixtures.valid.forEach(function (f) {
-      it('decodes ' + f.uri + ' correctly', function () {
+      it('decodes ' + f.uri, function () {
         var decode = bip21.decode(f.uri)
+
+        assert.equal(decode.address, f.address)
+
+        if (!f.options) return
+        assert.equal(decode.amount, f.options.amount)
+        assert.equal(decode.label, f.options.label)
+        assert.equal(decode.message, f.options.message)
+      })
+
+      var uri2 = 'bitcoin://' + f.uri.slice(8)
+      it('decodes ' + uri2, function () {
+        var decode = bip21.decode(uri2)
 
         assert.equal(decode.address, f.address)
 
@@ -33,7 +45,7 @@ describe('bip21', function () {
 
   describe('encode', function () {
     fixtures.valid.forEach(function (f) {
-      it('encodes ' + f.uri + ' correctly', function () {
+      it('encodes ' + f.uri, function () {
         var result = bip21.encode(f.address, f.options)
 
         assert.equal(result, f.uri)
