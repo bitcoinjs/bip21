@@ -40,7 +40,7 @@
   },
   "dependencies": {
     "bs58check": "^1.0.3",
-    "qs": "^2.3.2"
+    "qs": "^6.0.2"
   },
   "devDependencies": {
     "blanket": "*",
