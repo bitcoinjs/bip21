@@ -8,7 +8,7 @@ var fixtures = require('./fixtures')
 describe('bip21', function () {
   describe('decode', function () {
     fixtures.valid.forEach(function (f) {
-      it('decodes ' + f.uri, function () {
+      it('decodes ' + f.uri + (f.compliant === false ? ' (non-compliant)' : ''), function () {
         var decode = bip21.decode(f.uri)
 
         assert.equal(decode.address, f.address)
