@@ -6,6 +6,16 @@
     },
     {
       "address": "1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH",
+      "uri": "bitcoin:1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH?",
+      "compliant": false
+    },
+    {
+      "address": "1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH",
+      "uri": "bitcoin://1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH",
+      "compliant": false
+    },
+    {
+      "address": "1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH",
       "uri": "bitcoin:1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH?label=Luke-Jr",
       "options": {
         "label": "Luke-Jr"
@@ -14,6 +24,14 @@
     {
       "address": "1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH",
       "uri": "bitcoin:1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH?amount=0",
+      "options": {
+        "amount": 0
+      }
+    },
+    {
+      "address": "1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH",
+      "uri": "bitcoin://1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH?amount=0",
+      "compliant": false,
       "options": {
         "amount": 0
       }
@@ -57,10 +75,18 @@
         "custom": "foobar"
       }
     },
-
     {
       "address": "1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH",
       "uri": "bitcoin:1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH?amount=0.200000&r=https%3A%2F%2Fbitpay.com%2Fi%2Fxxxxxxxxxxxxxxxxxxxxxx",
+      "options": {
+        "amount": "0.200000",
+        "r": "https://bitpay.com/i/xxxxxxxxxxxxxxxxxxxxxx"
+      }
+    },
+    {
+      "address": "1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH",
+      "uri": "bitcoin://1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH?amount=0.200000&r=https%3A%2F%2Fbitpay.com%2Fi%2Fxxxxxxxxxxxxxxxxxxxxxx",
+      "compliant": false,
       "options": {
         "amount": "0.200000",
         "r": "https://bitpay.com/i/xxxxxxxxxxxxxxxxxxxxxx"
