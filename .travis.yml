@@ -1,8 +1,13 @@
 sudo: false
 language: node_js
 node_js:
+  - "0.10"
+  - "0.11"
   - "0.12"
-  - "iojs"
+  - "io.js"
+  - "4"
+  - "5"
+  - "6"
 env:
   - TEST_SUITE=coverage
   - TEST_SUITE=standard
