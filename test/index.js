@@ -1,55 +1,46 @@
-/* global describe, it */
-
-var assert = require('assert')
 var bip21 = require('../')
-
 var fixtures = require('./fixtures')
+var tape = require('tape')
 
-describe('bip21', function () {
-  describe('decode', function () {
-    fixtures.valid.forEach(function (f) {
-      it('decodes ' + f.uri + (f.compliant === false ? ' (non-compliant)' : ''), function () {
-        var decode = bip21.decode(f.uri)
+fixtures.valid.forEach(function (f) {
+  if (f.compliant === false) return
 
-        assert.equal(decode.address, f.address)
+  tape('encodes ' + f.uri, function (t) {
+    var result = bip21.encode(f.address, f.options)
 
-        if (!f.options) return
-        assert.equal(decode.amount, f.options.amount)
-        assert.equal(decode.label, f.options.label)
-        assert.equal(decode.message, f.options.message)
-      })
-    })
-
-    fixtures.invalid.forEach(function (f) {
-      if (!f.uri) return
-
-      it('throws ' + f.exception + ' for ' + f.uri, function () {
-        assert.throws(function () {
-          bip21.decode(f.uri)
-        }, new RegExp(f.exception))
-      })
-    })
+    t.plan(1)
+    t.equal(result, f.uri)
   })
 
-  describe('encode', function () {
-    fixtures.valid.forEach(function (f) {
-      if (f.compliant === false) return
+  tape('decodes ' + f.uri + (f.compliant === false ? ' (non-compliant)' : ''), function (t) {
+    var decode = bip21.decode(f.uri)
 
-      it('encodes ' + f.uri, function () {
-        var result = bip21.encode(f.address, f.options)
+    t.plan(f.options ? 4 : 1)
+    t.equal(decode.address, f.address)
 
-        assert.equal(result, f.uri)
-      })
-    })
-
-    fixtures.invalid.forEach(function (f) {
-      if (!f.address) return
-
-      it('throws ' + f.exception + ' for ' + f.uri, function () {
-        assert.throws(function () {
-          bip21.encode(f.address, f.options)
-        }, new RegExp(f.exception))
-      })
-    })
+    if (!f.options) return
+    t.equal(decode.amount, f.options.amount !== undefined ? parseFloat(f.options.amount) : undefined)
+    t.equal(decode.label, f.options.label)
+    t.equal(decode.message, f.options.message)
   })
+})
+
+fixtures.invalid.forEach(function (f) {
+  if (f.address) {
+    tape('throws ' + f.exception + ' for ' + f.uri, function (t) {
+      t.plan(1)
+      t.throws(function () {
+        bip21.encode(f.address, f.options)
+      }, new RegExp(f.exception))
+    })
+  }
+
+  if (f.uri) {
+    tape('throws ' + f.exception + ' for ' + f.uri, function (t) {
+      t.plan(1)
+      t.throws(function () {
+        bip21.decode(f.uri)
+      }, new RegExp(f.exception))
+    })
+  }
 })

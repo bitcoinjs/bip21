@@ -1,15 +1,19 @@
 sudo: false
 language: node_js
+before_install:
+  - npm install npm -g
 node_js:
   - "0.10"
-  - "0.11"
   - "0.12"
-  - "io.js"
   - "4"
   - "5"
   - "6"
+matrix:
+  include:
+    - node_js: "6"
+      env: TEST_SUITE=standard
+    - node_js: "6"
+      env: TEST_SUITE=coverage
 env:
-  - TEST_SUITE=coverage
-  - TEST_SUITE=standard
   - TEST_SUITE=unit
-script: "npm run-script $TEST_SUITE"
+script: npm run-script $TEST_SUITE
