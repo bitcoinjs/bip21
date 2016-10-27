@@ -25,7 +25,7 @@
     "unit": "tape test/*.js"
   },
   "dependencies": {
-    "bs58check": "^1.0.3",
+    "bs58check": "^1.1.1",
     "qs": "^6.0.2"
   },
   "devDependencies": {
