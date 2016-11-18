@@ -2,17 +2,20 @@
   "valid": [
     {
       "address": "1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH",
-      "uri": "bitcoin:1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH"
+      "uri": "bitcoin:1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH",
+      "options": {}
     },
     {
       "address": "1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH",
       "uri": "bitcoin:1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH?",
-      "compliant": false
+      "compliant": false,
+      "options": {}
     },
     {
       "address": "1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH",
       "uri": "bitcoin://1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH",
-      "compliant": false
+      "compliant": false,
+      "options": {}
     },
     {
       "address": "1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH",
@@ -40,21 +43,14 @@
       "address": "1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH",
       "uri": "bitcoin:1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH?amount=1",
       "options": {
-        "amount": 1
-      }
-    },
-    {
-      "address": "1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH",
-      "uri": "bitcoin:1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH?amount=1.00",
-      "options": {
-        "amount": "1.00"
+        "amount": 100000000
       }
     },
     {
       "address": "1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH",
       "uri": "bitcoin:1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH?amount=20.3&label=Luke-Jr",
       "options": {
-        "amount": 20.3,
+        "amount": 2030000000,
         "label": "Luke-Jr"
       }
     },
@@ -62,7 +58,7 @@
       "address": "1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH",
       "uri": "bitcoin:1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH?amount=50&label=Luke-Jr&message=Donation%20for%20project%20xyz",
       "options": {
-        "amount": 50,
+        "amount": 5000000000,
         "label": "Luke-Jr",
         "message": "Donation for project xyz"
       }
@@ -71,24 +67,24 @@
       "address": "1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH",
       "uri": "bitcoin:1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH?amount=1&custom=foobar",
       "options": {
-        "amount": 1,
+        "amount": 100000000,
         "custom": "foobar"
       }
     },
     {
       "address": "1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH",
-      "uri": "bitcoin:1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH?amount=0.200000&r=https%3A%2F%2Fbitpay.com%2Fi%2Fxxxxxxxxxxxxxxxxxxxxxx",
+      "uri": "bitcoin:1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH?amount=0.2&r=https%3A%2F%2Fbitpay.com%2Fi%2Fxxxxxxxxxxxxxxxxxxxxxx",
       "options": {
-        "amount": "0.200000",
+        "amount": 20000000,
         "r": "https://bitpay.com/i/xxxxxxxxxxxxxxxxxxxxxx"
       }
     },
     {
       "address": "1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH",
-      "uri": "bitcoin://1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH?amount=0.200000&r=https%3A%2F%2Fbitpay.com%2Fi%2Fxxxxxxxxxxxxxxxxxxxxxx",
+      "uri": "bitcoin://1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH?amount=0.2&r=https%3A%2F%2Fbitpay.com%2Fi%2Fxxxxxxxxxxxxxxxxxxxxxx",
       "compliant": false,
       "options": {
-        "amount": "0.200000",
+        "amount": 20000000,
         "r": "https://bitpay.com/i/xxxxxxxxxxxxxxxxxxxxxx"
       }
     }
@@ -100,12 +96,10 @@
     },
     {
       "exception": "Invalid checksum",
-      "address": "1BgGZ9tcN4rm9KBzDn7KprQz87SZ26XXXX",
       "uri": "bitcoin:1BgGZ9tcN4rm9KBzDn7KprQz87SZ26XXXX"
     },
     {
       "exception": "Invalid amount",
-      "address": "1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH",
       "uri": "bitcoin:1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH?amount=-1",
       "options": {
         "amount": -1
@@ -113,14 +107,6 @@
     },
     {
       "exception": "Invalid amount",
-      "address": "1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH",
-      "options": {
-        "amount": "-1"
-      }
-    },
-    {
-      "exception": "Invalid amount",
-      "address": "1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH",
       "uri": "bitcoin:1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH?amount=-1.00",
       "options": {
         "amount": -1.00
@@ -128,7 +114,6 @@
     },
     {
       "exception": "Invalid amount",
-      "address": "1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH",
       "uri": "bitcoin:1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH?amount=two",
       "options": {
         "amount": "two"

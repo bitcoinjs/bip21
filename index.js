@@ -5,42 +5,46 @@ var bs58check = require('bs58check')
 var qs = require('qs')
 
 function decode (uri) {
-  var qregex = /bitcoin:\/?\/?([^?]+)(\?([^]+))?/.exec(uri)
-  if (!qregex) throw new Error('Invalid BIP21 URI: ' + uri)
+  if (uri.indexOf('bitcoin:') !== 0) return
 
-  var address = qregex[1]
+  var split = uri.split('?')
+  if (split.length > 2) return
 
-  // throws if invalid
-  bs58check.decode(address)
+  // truncate bitcoin: (or non-compliant bitcoin://)
+  var address = split[0]
+  if (address.indexOf('//') === 8) address = address.slice(10)
+  else address = address.slice(8)
 
-  var query = qregex[3]
-  var parsed = qs.parse(query)
+  if (!bs58check.decodeRaw(address)) return
 
-  parsed.address = address
+  var query = split[1]
+  var options = qs.parse(query)
+  if (options.amount !== undefined) {
+    var amount = parseFloat(options.amount)
+    if (typeof amount !== 'number') return
+    if (!isFinite(amount)) return
+    if (amount < 0) return
 
-  if (parsed.amount) {
-    parsed.amount = parseFloat(parsed.amount)
-
-    if (!isFinite(parsed.amount)) throw new Error('Invalid amount')
-    if (parsed.amount < 0) throw new Error('Invalid amount')
+    // BTC -> satoshis
+    options.amount = amount * 1e8
   }
 
-  return parsed
+  return {
+    address: address,
+    options: options
+  }
 }
 
 function encode (address, options) {
-  // throws if invalid
-  bs58check.decode(address)
+  var _options = {}
+  for (var k in options) _options[k] = options[k]
 
-  options = options || {}
-
-  if (options.amount) {
-    if (!isFinite(options.amount)) throw new TypeError('Invalid amount')
-    if (options.amount < 0) throw new TypeError('Invalid amount')
+  if (_options.amount !== undefined) {
+    // satoshis -> BTC
+    _options.amount /= 1e8
   }
 
-  var query = qs.stringify(options)
-
+  var query = qs.stringify(_options)
   return 'bitcoin:' + address + (query ? '?' : '') + query
 }
 
