@@ -5,14 +5,19 @@ var bs58check = require('bs58check')
 var qs = require('qs')
 
 function decode (uri) {
-  var qregex = /bitcoin:\/?\/?([^?]+)(\?([^]+))?/.exec(uri)
-  if (!qregex) return
+  if (uri.indexOf('bitcoin:') !== 0) return
 
-  // throws if invalid
-  var address = qregex[1]
+  var split = uri.split('?')
+  if (split.length > 2) return
+
+  // truncate bitcoin: (or non-compliant bitcoin://)
+  var address = split[0]
+  if (address.indexOf('//') === 8) address = address.slice(10)
+  else address = address.slice(8)
+
   if (!bs58check.decodeRaw(address)) return
 
-  var query = qregex[3]
+  var query = split[1]
   var options = qs.parse(query)
   if (options.amount !== undefined) {
     var amount = parseFloat(options.amount)
