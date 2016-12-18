@@ -99,11 +99,6 @@
       "uri": "satoshi:1BgGZ9tcN4rm9KBzDn7KprQz87SZ26XXXX"
     },
     {
-      "exception": "Invalid checksum",
-      "address": "1BgGZ9tcN4rm9KBzDn7KprQz87SZ26XXXX",
-      "uri": "bitcoin:1BgGZ9tcN4rm9KBzDn7KprQz87SZ26XXXX"
-    },
-    {
       "exception": "Invalid amount",
       "address": "1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH",
       "uri": "bitcoin:1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH?amount=-1",

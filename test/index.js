@@ -19,9 +19,9 @@ fixtures.valid.forEach(function (f) {
     t.equal(decode.address, f.address)
 
     if (!f.options) return
-    t.equal(decode.amount, f.options.amount !== undefined ? parseFloat(f.options.amount) : undefined)
-    t.equal(decode.label, f.options.label)
-    t.equal(decode.message, f.options.message)
+    t.equal(decode.options.amount, f.options.amount !== undefined ? Number(f.options.amount) : undefined)
+    t.equal(decode.options.label, f.options.label)
+    t.equal(decode.options.message, f.options.message)
   })
 })
 
