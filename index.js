@@ -4,7 +4,7 @@
 var qs = require('qs')
 
 function decode (uri) {
-  var qregex = /bitcoin:\/?\/?([^?]+)(\?([^]+))?/.exec(uri)
+  var qregex = /bitcoin:\/?\/?([^?]+)?(\?([^]+))?/.exec(uri)
   if (!qregex) throw new Error('Invalid BIP21 URI: ' + uri)
 
   var address = qregex[1]

@@ -91,6 +91,15 @@
         "amount": "0.200000",
         "r": "https://bitpay.com/i/xxxxxxxxxxxxxxxxxxxxxx"
       }
+    },
+    {
+      "address": "",
+      "uri": "bitcoin://?amount=0.200000&r=https%3A%2F%2Fbitpay.com%2Fi%2Fxxxxxxxxxxxxxxxxxxxxxx",
+      "compliant": false,
+      "options": {
+        "amount": "0.200000",
+        "r": "https://bitpay.com/i/xxxxxxxxxxxxxxxxxxxxxx"
+      }
     }
   ],
   "invalid": [
