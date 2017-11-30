@@ -3,7 +3,7 @@
 [![build status](https://secure.travis-ci.org/bitcoinjs/bip21.png)](http://travis-ci.org/bitcoinjs/bip21)
 [![Version](http://img.shields.io/npm/v/bip21.svg)](https://www.npmjs.org/package/bip21)
 
-A [BIP21](https://github.com/bitcoin/bips/blob/master/bip-0021.mediawiki) compatible URL encoding utility library.
+A [BIP21](https://github.com/bitcoin/bips/blob/master/bip-0021.mediawiki) compatible URL encoding library.
 
 
 ## Example
