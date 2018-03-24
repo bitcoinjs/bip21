@@ -91,6 +91,11 @@
         "amount": "0.200000",
         "r": "https://bitpay.com/i/xxxxxxxxxxxxxxxxxxxxxx"
       }
+    },
+    {
+      "address": "1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH",
+      "uri": "other:1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH",
+      "urnScheme": "other"
     }
   ],
   "invalid": [
@@ -139,4 +144,3 @@
     }
   ]
 }
-

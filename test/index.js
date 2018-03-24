@@ -6,14 +6,24 @@ fixtures.valid.forEach(function (f) {
   if (f.compliant === false) return
 
   tape('encodes ' + f.uri, function (t) {
-    var result = bip21.encode(f.address, f.options)
+    var result
+    if (f.urnScheme) {
+      result = bip21.encode(f.address, f.options, f.urnScheme)
+    } else {
+      result = bip21.encode(f.address, f.options)
+    }
 
     t.plan(1)
     t.equal(result, f.uri)
   })
 
   tape('decodes ' + f.uri + (f.compliant === false ? ' (non-compliant)' : ''), function (t) {
-    var decode = bip21.decode(f.uri)
+    var decode
+    if (f.urnScheme) {
+      decode = bip21.decode(f.uri, f.urnScheme)
+    } else {
+      decode = bip21.decode(f.uri)
+    }
 
     t.plan(f.options ? 4 : 1)
     t.equal(decode.address, f.address)
