@@ -3,8 +3,9 @@
 
 var qs = require('qs')
 
-function decode (uri) {
-  var qregex = /bitcoin:\/?\/?([^?]+)(\?([^]+))?/.exec(uri)
+function decode (uri, urnScheme) {
+  var scheme = urnScheme || 'bitcoin'
+  var qregex = new RegExp(scheme + ':/?/?([^?]+)(\\?([^]+))?').exec(uri)
   if (!qregex) throw new Error('Invalid BIP21 URI: ' + uri)
 
   var address = qregex[1]
@@ -20,8 +21,9 @@ function decode (uri) {
   return { address: address, options: options }
 }
 
-function encode (address, options) {
+function encode (address, options, urnScheme) {
   options = options || {}
+  var scheme = urnScheme || 'bitcoin'
   var query = qs.stringify(options)
 
   if (options.amount) {
@@ -29,7 +31,7 @@ function encode (address, options) {
     if (options.amount < 0) throw new TypeError('Invalid amount')
   }
 
-  return 'bitcoin:' + address + (query ? '?' : '') + query
+  return scheme + ':' + address + (query ? '?' : '') + query
 }
 
 module.exports = {
