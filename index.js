@@ -4,12 +4,14 @@
 var qs = require('qs')
 
 function decode (uri, urnScheme) {
-  var scheme = urnScheme || 'bitcoin'
-  var qregex = new RegExp(scheme + ':/?/?([^?]+)(\\?([^]+))?').exec(uri)
-  if (!qregex) throw new Error('Invalid BIP21 URI: ' + uri)
+  urnScheme = urnScheme || 'bitcoin'
+  if (uri.indexOf(urnScheme) !== 0 ||
+    uri.charAt(urnScheme.length) !== ':'
+  ) throw new Error('Invalid BIP21 URI: ' + uri)
 
-  var address = qregex[1]
-  var query = qregex[3]
+  var split = uri.indexOf('?')
+  var address = uri.slice(urnScheme.length + 1, split === -1 ? undefined : split)
+  var query = split === -1 ? '' : uri.slice(split + 1)
   var options = qs.parse(query)
 
   if (options.amount) {
