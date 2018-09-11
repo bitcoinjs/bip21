@@ -33,4 +33,4 @@ console.log(bip21.encode('1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH', {
 ```
 
 
-## License [ISC](LICENSE)
+## License [MIT](LICENSE)
