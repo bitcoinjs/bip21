@@ -15,9 +15,9 @@ function decode (uri, urnScheme) {
   var options = qs.parse(query)
 
   if (options.amount) {
-    options.amount = Number(options.amount)
-    if (!isFinite(options.amount)) throw new Error('Invalid amount')
-    if (options.amount < 0) throw new Error('Invalid amount')
+    var validAmountCheck = Number(options.amount)
+    if (!isFinite(validAmountCheck)) throw new Error('Invalid amount')
+    if (validAmountCheck < 0) throw new Error('Invalid amount')
   }
 
   return { address: address, options: options }
