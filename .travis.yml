@@ -1,3 +1,4 @@
+if: (type = push AND branch = master) OR type = pull_request
 sudo: false
 language: node_js
 node_js:
