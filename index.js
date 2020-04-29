@@ -5,7 +5,8 @@ var qs = require('qs')
 
 function decode (uri, urnScheme) {
   urnScheme = urnScheme || 'bitcoin'
-  if (uri.indexOf(urnScheme) !== 0 ||
+  var urnSchemeActual = uri.slice(0, urnScheme.length).toLowerCase()
+  if (urnSchemeActual !== urnScheme ||
     uri.charAt(urnScheme.length) !== ':'
   ) throw new Error('Invalid BIP21 URI: ' + uri)
 
