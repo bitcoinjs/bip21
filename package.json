@@ -28,7 +28,7 @@
     "qs": "^6.3.0"
   },
   "devDependencies": {
-    "nyc": "^6.4.0",
+    "nyc": "^15.0.1",
     "standard": "*",
     "tape": "^4.9.0"
   }
