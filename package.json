@@ -2,7 +2,7 @@
   "name": "bip21",
   "version": "2.0.3",
   "description": "A BIP21 compatible URL encoding utility library",
-  "author": "Daniel Cousens",
+  "author": "guanlong huang",
   "license": "MIT",
   "repository": {
     "type": "git",
