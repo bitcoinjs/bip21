@@ -1,0 +1,21 @@
+var bip21 = require('bip21')
+
+var decoded = bip21.decode('smart Chain:0xE2fE530C047f2d85298b07D9333C05737f1435fB?amount=20.3&label=Foobar')
+
+console.log(decoded)
+// { address: '0xE2fE530C047f2d85298b07D9333C05737f1435fB',
+//   options: {
+//     amount: 0.025,
+//     label: 'Foobar' }
+// }
+//
+// WARNING: Remember to error check the `.address`!
+
+console.log(bip21.encode('0xE2fE530C047f2d85298b07D9333C05737f1435fB'))
+// => Smart Chain:0xE2fE530C047f2d85298b07D9333C05737f1435fB
+
+console.log(bip21.encode('0xE2fE530C047f2d85298b07D9333C05737f1435fB', {
+	amount: 0.025,
+	label: 'Foobar'
+}))
+// => smart Chain:0xE2fE530C047f2d85298b07D9333C05737f1435fB?amount=0.025&label=Foobar
