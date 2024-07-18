@@ -1,12 +1,12 @@
-var bip21 = require('../')
-var fixtures = require('./fixtures')
-var tape = require('tape')
+const bip21 = require('../')
+const fixtures = require('./fixtures')
+const tape = require('tape')
 
 fixtures.valid.forEach(function (f) {
   if (f.compliant === false) return
 
   tape('encodes ' + f.uri, function (t) {
-    var result
+    let result
     if (f.urnScheme) {
       result = bip21.encode(f.address, f.options, f.urnScheme)
     } else {
@@ -19,7 +19,7 @@ fixtures.valid.forEach(function (f) {
   })
 
   tape('decodes ' + f.uri + (f.compliant === false ? ' (non-compliant)' : ''), function (t) {
-    var decode
+    let decode
     if (f.urnScheme) {
       decode = bip21.decode(f.uri, f.urnScheme)
     } else {
