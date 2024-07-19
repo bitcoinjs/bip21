@@ -1,16 +1,17 @@
-var bip21 = require('../')
-var fixtures = require('./fixtures')
-var tape = require('tape')
+import { encode, decode as _decode } from '../index.js'
+import fixtures from './fixtures.json' assert { type: 'json' }
+const { valid, invalid } = fixtures
+import tape from 'tape'
 
-fixtures.valid.forEach(function (f) {
+valid.forEach(function (f) {
   if (f.compliant === false) return
 
   tape('encodes ' + f.uri, function (t) {
-    var result
+    let result
     if (f.urnScheme) {
-      result = bip21.encode(f.address, f.options, f.urnScheme)
+      result = encode(f.address, f.options, f.urnScheme)
     } else {
-      result = bip21.encode(f.address, f.options)
+      result = encode(f.address, f.options)
     }
 
     t.plan(1)
@@ -19,11 +20,11 @@ fixtures.valid.forEach(function (f) {
   })
 
   tape('decodes ' + f.uri + (f.compliant === false ? ' (non-compliant)' : ''), function (t) {
-    var decode
+    let decode
     if (f.urnScheme) {
-      decode = bip21.decode(f.uri, f.urnScheme)
+      decode = _decode(f.uri, f.urnScheme)
     } else {
-      decode = bip21.decode(f.uri)
+      decode = _decode(f.uri)
     }
 
     t.plan(f.options ? 4 : 1)
@@ -36,12 +37,12 @@ fixtures.valid.forEach(function (f) {
   })
 })
 
-fixtures.invalid.forEach(function (f) {
+invalid.forEach(function (f) {
   if (f.address) {
     tape('throws ' + f.exception + ' for ' + f.uri, function (t) {
       t.plan(1)
       t.throws(function () {
-        bip21.encode(f.address, f.options)
+        encode(f.address, f.options)
       }, new RegExp(f.exception))
     })
   }
@@ -50,7 +51,7 @@ fixtures.invalid.forEach(function (f) {
     tape('throws ' + f.exception + ' for ' + f.uri, function (t) {
       t.plan(1)
       t.throws(function () {
-        bip21.decode(f.uri)
+        _decode(f.uri)
       }, new RegExp(f.exception))
     })
   }
