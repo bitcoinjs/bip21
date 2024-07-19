@@ -1,19 +1,19 @@
 // https://github.com/bitcoin/bips/blob/master/bip-0021.mediawiki
 // bitcoin:<address>[?amount=<amount>][?label=<label>][?message=<message>]
 
-var qs = require('qs')
+const qs = require('qs')
 
 function decode (uri, urnScheme) {
   urnScheme = urnScheme || 'bitcoin'
-  var urnSchemeActual = uri.slice(0, urnScheme.length).toLowerCase()
+  const urnSchemeActual = uri.slice(0, urnScheme.length).toLowerCase()
   if (urnSchemeActual !== urnScheme ||
     uri.charAt(urnScheme.length) !== ':'
   ) throw new Error('Invalid BIP21 URI: ' + uri)
 
-  var split = uri.indexOf('?')
-  var address = uri.slice(urnScheme.length + 1, split === -1 ? undefined : split)
-  var query = split === -1 ? '' : uri.slice(split + 1)
-  var options = qs.parse(query)
+  const split = uri.indexOf('?')
+  const address = uri.slice(urnScheme.length + 1, split === -1 ? undefined : split)
+  const query = split === -1 ? '' : uri.slice(split + 1)
+  const options = qs.parse(query)
 
   if (options.amount) {
     options.amount = Number(options.amount)
@@ -21,13 +21,13 @@ function decode (uri, urnScheme) {
     if (options.amount < 0) throw new Error('Invalid amount')
   }
 
-  return { address: address, options: options }
+  return { address, options }
 }
 
 function encode (address, options, urnScheme) {
   options = options || {}
-  var scheme = urnScheme || 'bitcoin'
-  var query = qs.stringify(options)
+  const scheme = urnScheme || 'bitcoin'
+  const query = qs.stringify(options)
 
   if (options.amount) {
     if (!isFinite(options.amount)) throw new TypeError('Invalid amount')
@@ -38,6 +38,6 @@ function encode (address, options, urnScheme) {
 }
 
 module.exports = {
-  decode: decode,
-  encode: encode
+  decode,
+  encode
 }
