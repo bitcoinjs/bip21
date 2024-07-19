@@ -5,7 +5,7 @@ const querystring = require('query-string').default
 
 function decode (uri, urnScheme) {
   urnScheme = urnScheme || 'bitcoin'
-  
+
   const urnSchemeActual = uri.slice(0, urnScheme.length).toLowerCase()
   if (urnSchemeActual !== urnScheme ||
     uri.charAt(urnScheme.length) !== ':'
@@ -22,7 +22,7 @@ function decode (uri, urnScheme) {
     if (options.amount < 0) throw new Error('Invalid amount')
   }
 
-  return { address: address, options: options }
+  return { address, options }
 }
 
 function encode (address, options, urnScheme) {
@@ -39,6 +39,6 @@ function encode (address, options, urnScheme) {
 }
 
 module.exports = {
-  decode: decode,
-  encode: encode
+  decode,
+  encode
 }
