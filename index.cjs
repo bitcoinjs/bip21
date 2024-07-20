@@ -1,10 +1,11 @@
 // https://github.com/bitcoin/bips/blob/master/bip-0021.mediawiki
 // bitcoin:<address>[?amount=<amount>][?label=<label>][?message=<message>]
 
-import querystring from 'query-string'
+const querystring = require('query-string').default
 
-export function decode (uri, urnScheme) {
+function decode (uri, urnScheme) {
   urnScheme = urnScheme || 'bitcoin'
+
   const urnSchemeActual = uri.slice(0, urnScheme.length).toLowerCase()
   if (urnSchemeActual !== urnScheme ||
     uri.charAt(urnScheme.length) !== ':'
@@ -24,7 +25,7 @@ export function decode (uri, urnScheme) {
   return { address, options }
 }
 
-export function encode (address, options, urnScheme) {
+function encode (address, options, urnScheme) {
   options = options || {}
   const scheme = urnScheme || 'bitcoin'
   const query = querystring.stringify(options)
@@ -35,4 +36,9 @@ export function encode (address, options, urnScheme) {
   }
 
   return scheme + ':' + address + (query ? '?' : '') + query
+}
+
+module.exports = {
+  decode,
+  encode
 }

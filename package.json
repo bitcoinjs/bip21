@@ -1,9 +1,10 @@
 {
   "name": "bip21",
-  "version": "2.0.3",
+  "version": "3.0.0",
   "description": "A BIP21 compatible URL encoding utility library",
   "author": "Daniel Cousens",
   "license": "MIT",
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "https://github.com/bitcoinjs/bip21.git"
@@ -16,23 +17,34 @@
     "bip21",
     "bitcoin"
   ],
-  "main": "./index.js",
+  "main": "./index.cjs",
+  "module": "./index.js",
+  "types": "./index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./index.cjs",
+      "import": "./index.js",
+      "types": "./index.d.ts"
+    }
+  },
   "files": [
-    "index.js"
+    "index.js",
+    "index.cjs",
+    "index.d.ts"
   ],
   "scripts": {
     "coverage-report": "nyc report --reporter=lcov",
-    "coverage": "nyc --check-coverage --branches 90 --functions 90 npm run unit",
-    "standard": "standard",
+    "coverage": "c8 --check-coverage --branches 90 --functions 90 npm run unit",
+    "standard": "standard --ignore test",
     "test": "npm run standard && npm run coverage",
     "unit": "tape test/*.js"
   },
   "dependencies": {
-    "qs": "^6.3.0"
+    "query-string": "^9.0.0"
   },
-  "devDependencies": {
-    "nyc": "^15.0.1",
+  "devDependencies": {   
+    "c8": "^10.1.2",
     "standard": "*",
-    "tape": "^4.9.0"
+    "tape": "^5.3.0"
   }
 }

@@ -1,8 +1,9 @@
-const bip21 = require('../')
-const fixtures = require('./fixtures')
-const tape = require('tape')
+import * as bip21 from '../index.js'
+import fixtures from './fixtures.json' assert { type: 'json' }
+const { valid, invalid } = fixtures
+import tape from 'tape'
 
-fixtures.valid.forEach(function (f) {
+valid.forEach(function (f) {
   if (f.compliant === false) return
 
   tape('encodes ' + f.uri, function (t) {
@@ -36,7 +37,7 @@ fixtures.valid.forEach(function (f) {
   })
 })
 
-fixtures.invalid.forEach(function (f) {
+invalid.forEach(function (f) {
   if (f.address) {
     tape('throws ' + f.exception + ' for ' + f.uri, function (t) {
       t.plan(1)
