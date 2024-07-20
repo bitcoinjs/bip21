@@ -1,4 +1,4 @@
-import { encode, decode as _decode } from '../index.js'
+import * as bip21 from '../index.js'
 import fixtures from './fixtures.json' assert { type: 'json' }
 const { valid, invalid } = fixtures
 import tape from 'tape'
@@ -9,9 +9,9 @@ valid.forEach(function (f) {
   tape('encodes ' + f.uri, function (t) {
     let result
     if (f.urnScheme) {
-      result = encode(f.address, f.options, f.urnScheme)
+      result = bip21.encode(f.address, f.options, f.urnScheme)
     } else {
-      result = encode(f.address, f.options)
+      result = bip21.encode(f.address, f.options)
     }
 
     t.plan(1)
@@ -22,9 +22,9 @@ valid.forEach(function (f) {
   tape('decodes ' + f.uri + (f.compliant === false ? ' (non-compliant)' : ''), function (t) {
     let decode
     if (f.urnScheme) {
-      decode = _decode(f.uri, f.urnScheme)
+      decode = bip21.decode(f.uri, f.urnScheme)
     } else {
-      decode = _decode(f.uri)
+      decode = bip21.decode(f.uri)
     }
 
     t.plan(f.options ? 4 : 1)
@@ -42,7 +42,7 @@ invalid.forEach(function (f) {
     tape('throws ' + f.exception + ' for ' + f.uri, function (t) {
       t.plan(1)
       t.throws(function () {
-        encode(f.address, f.options)
+        bip21.encode(f.address, f.options)
       }, new RegExp(f.exception))
     })
   }
@@ -51,7 +51,7 @@ invalid.forEach(function (f) {
     tape('throws ' + f.exception + ' for ' + f.uri, function (t) {
       t.plan(1)
       t.throws(function () {
-        _decode(f.uri)
+        bip21.decode(f.uri)
       }, new RegExp(f.exception))
     })
   }
